@@ -21,6 +21,8 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The built request.</returns>
         IItemChildrenCollectionRequest Request();
 
+        IItemChildrenCollectionRequest Request(string name, string v, List<Option> options);
+
         /// <summary>
         /// Builds the request.
         /// </summary>

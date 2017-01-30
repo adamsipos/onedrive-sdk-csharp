@@ -9,6 +9,7 @@ namespace Microsoft.OneDrive.Sdk
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Net.Http;
     using System.Threading;
     using Microsoft.Graph;
@@ -25,6 +26,8 @@ namespace Microsoft.OneDrive.Sdk
         /// <param name="item">The Item to add.</param>
         /// <returns>The created Item.</returns>
         System.Threading.Tasks.Task<Item> AddAsync(Item item);
+
+        System.Threading.Tasks.Task<Item> PutAsync<T>(Stream stream);
 
         /// <summary>
         /// Adds the specified Item to the collection via POST.

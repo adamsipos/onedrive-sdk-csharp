@@ -9,8 +9,10 @@ namespace Microsoft.OneDrive.Sdk
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Net.Http;
     using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Graph;
 
     /// <summary>
@@ -164,6 +166,13 @@ namespace Microsoft.OneDrive.Sdk
         {
             this.QueryOptions.Add(new QueryOption("$orderby", value));
             return this;
+        }
+
+        public Task<Item> PutAsync<T>(Stream stream)
+        {
+            this.ContentType = "text/plain";
+            this.Method = "PUT";
+            return this.SendAsync<Item>(stream, CancellationToken.None);
         }
     }
 }

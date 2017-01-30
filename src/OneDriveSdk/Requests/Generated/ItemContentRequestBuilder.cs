@@ -7,6 +7,7 @@
 
 namespace Microsoft.OneDrive.Sdk
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Graph;
 
@@ -34,6 +35,13 @@ namespace Microsoft.OneDrive.Sdk
         public IItemContentRequest Request()
         {
             return new ItemContentRequest(this.RequestUrl, this.Client, null);
+        }
+
+        public IItemContentRequest Request(string conflict)
+        {
+            var options = new List<Option>();
+            options.Add(new QueryOption("@name.conflictBehavior", conflict));
+            return new ItemContentRequest(this.RequestUrl, this.Client, options);
         }
     }
 }

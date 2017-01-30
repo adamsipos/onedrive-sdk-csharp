@@ -46,6 +46,16 @@ namespace Microsoft.OneDrive.Sdk
             return new ItemChildrenCollectionRequest(this.RequestUrl, this.Client, options);
         }
 
+        public IItemChildrenCollectionRequest Request(string name, string conflict, List<Option> options)
+        {
+            if (options == null)
+            {
+                options = new List<Option>();
+            }
+            options.Add(new QueryOption("@name.conflictBehavior",conflict));
+            return new ItemChildrenCollectionRequest(this.AppendSegmentToRequestUrl(name + "/content"), this.Client, options);
+        }
+
         /// <summary>
         /// Gets an <see cref="IItemRequestBuilder"/> for the specified ItemItem.
         /// </summary>

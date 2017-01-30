@@ -20,5 +20,7 @@ namespace Microsoft.OneDrive.Sdk
         /// </summary>
         /// <returns>The built request.</returns>
         IItemContentRequest Request();
+
+        IItemContentRequest Request(string conflict);
     }
 }
